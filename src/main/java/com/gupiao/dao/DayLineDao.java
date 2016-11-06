@@ -49,24 +49,24 @@ public class DayLineDao {
 		session.close();
 	}
 
-	public DayLine getLastDayLine(String code) {
+	public List<DayLine> getLastDayLine(String code, int days) {
 		Session session = sessionFactory.openSession();
-		DayLine dayLine = null;
+		List<DayLine> dayLine = null;
 		String hql = "from DayLine where code=? order by date desc";
 		Query<DayLine> query = session.createQuery(hql, DayLine.class);
 		query.setParameter(0, code);
-		query.setMaxResults(1);
+		query.setMaxResults(days);
 		try {
-			dayLine = query.getSingleResult();
+			dayLine = query.getResultList();
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 		}
 		session.close();
 		return dayLine;
 	}
-	
+
 	public boolean isEmpty() {
-		List<DayLine> dayLines= getAllDayLine();
+		List<DayLine> dayLines = getAllDayLine();
 		return dayLines.size() == 0;
 	}
 }

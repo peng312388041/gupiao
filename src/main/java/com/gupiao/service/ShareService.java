@@ -17,6 +17,7 @@ public class ShareService {
 		int year=DateUtils.getYMDOfGupiaoDateString(todayString, YearMonthDay.YEAR);
 		int month=DateUtils.getYMDOfGupiaoDateString(todayString, YearMonthDay.MONTH);
 		int day=DateUtils.getYMDOfGupiaoDateString(todayString, YearMonthDay.DAY);
+		
 		return shares;
 	}
 }

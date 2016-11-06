@@ -179,7 +179,7 @@ public class DataManager {
 		for (Share share : shares) {
 			String shareCode = share.getCode();
 			if (shareCode.startsWith("0") || shareCode.startsWith("3") || shareCode.startsWith("6")) {
-				DayLine dayLine = daylineDao.getLastDayLine(shareCode);
+				DayLine dayLine = daylineDao.getLastDayLine(shareCode,1).get(0);
 				if (dayLine != null) {
 					String dateString = dayLine.getDate();
 					String code = getTypeOfShare(shareCode) + shareCode;

@@ -11,7 +11,7 @@ public class TestDayLine {
 
 	@Test
 	public void test() {
-		DayLine dayLine=new DayLineDao().getLastDayLine("600000");
+		DayLine dayLine=new DayLineDao().getLastDayLine("600000",1).get(0);
 		System.out.println(dayLine);
 	}
 
